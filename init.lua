@@ -99,7 +99,7 @@ do
   vim.g.maplocalleader = ' '
 
   -- Set to true if you have a Nerd Font installed and selected in the terminal
-  vim.g.have_nerd_font = false
+  vim.g.have_nerd_font = true
 
   -- [[ Setting options ]]
   --  See `:help vim.o`
@@ -362,6 +362,15 @@ do
     },
   }
 
+  vim.pack.add { gh 'NeogitOrg/neogit' }
+  require('neogit').setup {
+    -- You can pass custom options here later if you want
+    kind = 'tab', -- Opens neogit in a new tab page
+  }
+
+  -- Add a handy keymap to open Neogit status screen
+  vim.keymap.set('n', '<leader>ng', '<cmd>Neogit<CR>', { desc = '[N]eo[g]it status' })
+
   -- Useful plugin to show you pending keybinds.
   vim.pack.add { gh 'folke/which-key.nvim' }
   require('which-key').setup {
@@ -384,6 +393,7 @@ do
   --
   -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
   vim.pack.add { gh 'folke/tokyonight.nvim' }
+  vim.pack.add { gh "ellisonleao/gruvbox.nvim" }
   ---@diagnostic disable-next-line: missing-fields
   require('tokyonight').setup {
     styles = {
@@ -394,7 +404,7 @@ do
   -- Load the colorscheme here.
   -- Like many other themes, this one has different styles, and you could load
   -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-  vim.cmd.colorscheme 'tokyonight-night'
+  vim.cmd.colorscheme 'gruvbox'
 
   -- Highlight todo, notes, etc in comments
   vim.pack.add { gh 'folke/todo-comments.nvim' }
